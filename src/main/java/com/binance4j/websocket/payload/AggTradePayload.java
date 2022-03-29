@@ -55,7 +55,7 @@ public class AggTradePayload {
 	 * @param isBuyerMaker The new value
 	 */
 	@JsonProperty("m")
-	private boolean isBuyerMaker;
+	private Boolean isBuyerMaker;
 	/**
 	 * @return The event type
 	 * @param eventType The new value

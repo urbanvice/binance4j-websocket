@@ -35,7 +35,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
      *         failure event
      * @param closing The new value
      */
-    private boolean closing = false;
+    private Boolean closing = false;
 
     /**
      * Default constructor

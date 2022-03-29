@@ -53,7 +53,7 @@ public abstract class WebSocketClient<T> {
 	 * @return Should we use testnet?
 	 * @param useTestnet The new value
 	 */
-	protected boolean useTestnet;
+	protected Boolean useTestnet;
 
 	/**
 	 * @return The default ping interval to prevent websocket timeout
@@ -225,7 +225,7 @@ public abstract class WebSocketClient<T> {
 	 * 
 	 * @param useTestnet should the base URL be the testNet url?
 	 */
-	protected String getStreamApiBaseUrl(boolean useTestnet) {
+	protected String getStreamApiBaseUrl(Boolean useTestnet) {
 		return !useTestnet
 				? String.format("wss://stream.%s:9443/ws", BASE_DOMAIN)
 				: String.format("wss://%s/ws", TESTNET_DOMAIN);
