@@ -7,7 +7,10 @@ import java.util.stream.Collectors;
 import com.binance4j.core.exception.ApiException;
 
 import io.reactivex.rxjava3.functions.Consumer;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -53,8 +56,7 @@ public abstract class WebSocketClient<T> {
 	 * @return Should we use testnet?
 	 * @param useTestnet The new value
 	 */
-	protected Boolean useTestnet;
-
+	protected boolean useTestnet;
 	/**
 	 * @return The default ping interval to prevent websocket timeout
 	 * @param pingIntervalNum The new value
@@ -65,21 +67,29 @@ public abstract class WebSocketClient<T> {
 	 * @param pingInterval The new value
 	 */
 	protected TimeUnit pingInterval = TimeUnit.MINUTES;
-
 	/** The {@link #onMessage} consumer */
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	protected Consumer<T> onMessageConsumer = (T payload) -> {
 	};
 	/** The {@link #onOpen} consumer */
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	protected Consumer<Response> onOpenConsumer = (Response response) -> {
 	};
-
 	/** The {@link #onClosing} consumer */
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	protected Consumer<WebsocketCloseObject> onClosingConsumer = (WebsocketCloseObject closeObject) -> {
 	};
 	/** The {@link #onClosed} consumer */
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	protected Consumer<WebsocketCloseObject> onClosedConsumer = (WebsocketCloseObject closeObject) -> {
 	};
 	/** The {@link #onFailure} consumer */
+	@Getter(AccessLevel.NONE)
+	@Setter(AccessLevel.NONE)
 	protected Consumer<ApiException> onFailureConsumer = (ApiException response) -> {
 	};
 
@@ -200,7 +210,7 @@ public abstract class WebSocketClient<T> {
 
 	/** Closes the stream */
 	public void close() {
-		websocket.close(0, null);
+		websocket.close(1000, null);
 	}
 
 	/**
@@ -225,7 +235,7 @@ public abstract class WebSocketClient<T> {
 	 * 
 	 * @param useTestnet should the base URL be the testNet url?
 	 */
-	protected String getStreamApiBaseUrl(Boolean useTestnet) {
+	protected String getStreamApiBaseUrl(boolean useTestnet) {
 		return !useTestnet
 				? String.format("wss://stream.%s:9443/ws", BASE_DOMAIN)
 				: String.format("wss://%s/ws", TESTNET_DOMAIN);
@@ -239,6 +249,12 @@ public abstract class WebSocketClient<T> {
 	 * @return
 	 */
 	protected String generateChannel(String symbols, String stream) {
+		if (symbols != null) {
+			System.out.println(Arrays.stream(symbols.toLowerCase().split(","))
+					.map(String::trim)
+					.map(s -> String.format("%s@%s", s, stream))
+					.collect(Collectors.joining("/")));
+		}
 		return symbols == null ? stream
 				: Arrays.stream(symbols.toLowerCase().split(","))
 						.map(String::trim)
