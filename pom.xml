@@ -195,7 +195,6 @@
             </goals>
             <configuration>
               <sourcepath>target/delombok</sourcepath>
-              <destDir>docs</destDir>
             </configuration>
           </execution>
         </executions>
