@@ -4,12 +4,20 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.binance4j</groupId>
   <artifactId>binance4j-websocket</artifactId>
-  <version>1.0.1</version>
+  <version>${binance4j.version}</version>
   <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <binance4j.version>1.0.3</binance4j.version>
+    <repository.url>https://github.com/binance4j/binance4j-websocket</repository.url>
+  </properties>
 
   <name>binance4j-websocket</name>
   <description>A client to communicate with the Binance Websocket API</description>
-  <url>https://github.com/binance4j/binance4j-websocket</url>
+  <url>${repository.url}</url>
 
   <licenses>
     <license>
@@ -40,19 +48,14 @@
   </developers>
 
   <scm>
-    <url>https://github.com/binance4j/binance4j-websocket.git</url>
+    <url>${repository.url}.git</url>
   </scm>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.binance4j</groupId>
       <artifactId>binance4j-core</artifactId>
-      <version>1.0.1</version>
+      <version>${binance4j.version}</version>
     </dependency>
     <dependency>
       <groupId>io.reactivex.rxjava3</groupId>
