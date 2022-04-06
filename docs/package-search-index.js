@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.binance4j.websocket.client"},{"l":"com.binance4j.websocket.payload"},{"l":"com.binance4j.websocket.serialization"}];updateSearchResults();
