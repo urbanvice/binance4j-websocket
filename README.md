@@ -1,28 +1,19 @@
-name: verify and publish javadoc on gh-pages
+# binance4j-websocket
 
-on:
-  push:
-    branches:
-      - main
+Binance4j-websocket is a Java library providing an API for interacting with the Binance websocket endpoints.
 
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-java@v2
-        with:
-          java-version: 17
-          distribution: 'adopt'
-      - name: Verify project
-        run: mvn clean verify -DskipTests
-      - name: Deploy javadoc to gh-pages
-        uses: JamesIves/github-pages-deploy-action@4.1.8
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          CLEAN: true
-          FOLDER: target/apidocs
-          TARGET_FOLDER: /
+## Installation
+
+### Maven
+
+```xml
+<dependency>
+  <groupId>com.binance4j</groupId>
+  <artifactId>binance4j-websocket</artifactId>
+  <version>1.0.1</version>
+</dependency>
+```
+
+## Javadoc
+
+[Javadoc can be found here](https://binance4j.github.io/binance4j-websocket/)
