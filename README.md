@@ -1,5 +1,7 @@
 # binance4j-websocket
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)
+
 Binance4j-websocket is a Java library providing an API for interacting with the Binance websocket endpoints.
 
 ## Installation
