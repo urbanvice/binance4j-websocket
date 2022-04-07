@@ -34,11 +34,7 @@ jobs:
                 "id": "ossrh",
                 "username": "${{ env.OSSRH_USERNAME }}", 
                 "password": "${{ env.OSSRH_PASSWORD }}"
-              },
-              {
-                "id": "gpg.passphrase", 
-                "passphrase": "${{ env.PASSPHRASE }}"
               }
             ]
       - name: Deploy artifact on maven
-        run: mvn --no-transfer-progress --batch-mode clean deploy 
+        run: mvn --no-transfer-progress --batch-mode -Dgpg.passphrase=${{ env.PASSPHRASE }}  clean deploy 
