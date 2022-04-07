@@ -66,17 +66,7 @@
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.sonatype.plugins</groupId>
-        <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.12</version>
-        <extensions>true</extensions>
-        <configuration>
-          <serverId>ossrh</serverId>
-          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>true</autoReleaseAfterClose>
-        </configuration>
-      </plugin>
+      <!-- Automatically delomboks the source code -->
       <plugin>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok-maven-plugin</artifactId>
@@ -89,6 +79,7 @@
             </goals>
           </execution>
         </executions>
+        <!-- Defines input and output for code delombok -->
         <configuration>
           <sourceDirectory>src/main/java</sourceDirectory>
           <outputDirectory>${project.build.directory}/delombok</outputDirectory>
@@ -96,28 +87,7 @@
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>3.1.0</version>
-        <executions>
-          <execution>
-            <id>copy-to-lombok-build</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>${project.basedir}/src/main/resources</directory>
-                </resource>
-              </resources>
-              <outputDirectory>${project.build.directory}/delombok</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+      <!-- Allows Ant operations -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -129,6 +99,7 @@
             <goals>
               <goal>run</goal>
             </goals>
+            <!-- generates the sources jar from the delombok directory -->
             <configuration>
               <target>
                 <jar destfile="${project.build.directory}/${project.build.finalName}-sources.jar" basedir="${project.build.directory}/delombok" />
@@ -137,6 +108,7 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Add more sources to the project -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -148,6 +120,7 @@
             <goals>
               <goal>attach-artifact</goal>
             </goals>
+            <!-- Defines the sources jar -->
             <configuration>
               <artifacts>
                 <artifact>
@@ -160,6 +133,7 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Attaches the sources -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -173,6 +147,7 @@
           </execution>
         </executions>
       </plugin>
+      <!-- Configures the javadoc generation -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
@@ -183,16 +158,25 @@
             <goals>
               <goal>jar</goal>
             </goals>
+            <!-- Source directory for the javadoc genration (delomboked code else will throws error since annotations are not standard) -->
             <configuration>
               <sourcepath>target/delombok</sourcepath>
             </configuration>
           </execution>
         </executions>
       </plugin>
+      <!-- Signs the artifact for deployment -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
-        
+        <version>3.0.1</version>
+        <!-- Prevents from calling the passphrase dialog box -->
+        <configuration>
+          <gpgArguments>
+            <arg>--pinentry-mode</arg>
+            <arg>loopback</arg>
+          </gpgArguments>
+        </configuration>
         <executions>
           <execution>
             <id>sign-artifacts</id>
@@ -202,6 +186,19 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <!-- Plugin for deployment -->
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.12</version>
+        <extensions>true</extensions>
+        <!-- Since the project is open source, the hosting is offered by sonatype -->
+        <configuration>
+          <serverId>ossrh</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
       </plugin>
     </plugins>
     <pluginManagement>
