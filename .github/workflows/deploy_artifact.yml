@@ -1,4 +1,4 @@
-name: Deploy Artifact on Maven
+name: Deploy Artifact on Maven then merge on main
 
 on:
   push:
@@ -15,6 +15,7 @@ jobs:
       PASSPHRASE: ${{ secrets.PASSPHRASE }}
       OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
       OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -38,3 +39,10 @@ jobs:
             ]
       - name: Deploy artifact on maven
         run: mvn --no-transfer-progress --batch-mode -Dgpg.passphrase=${{ env.PASSPHRASE }}  clean deploy 
+      - name: Merge deploy -> main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: deploy
+          target_branch: main
+          github_token: ${{ env.GITHUB_TOKEN }}
