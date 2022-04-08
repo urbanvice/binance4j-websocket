@@ -3,7 +3,8 @@ name: Verify and publish javadoc on gh-pages
 on:
   push:
     branches:
-      - main
+      - '*'
+      - '!dev'
 
 jobs:
   publish:
