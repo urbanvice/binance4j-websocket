@@ -12,7 +12,7 @@ public class WebsocketAggTradeClientTest {
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketAggTradeClient("SHIBEUR");
+        client = new WebsocketAggTradeClient("BTCBUSD");
 
         client.onOpen(cb -> {
             System.out.println("open");
@@ -35,7 +35,6 @@ public class WebsocketAggTradeClientTest {
 
         client.onMessage(cb -> {
             System.out.println("message");
-            System.out.println(cb);
             assertNotNull(cb.getAggregatedTradeId());
             assertNotNull(cb.getEventTime());
             assertNotNull(cb.getEventType());

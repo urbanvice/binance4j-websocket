@@ -52,6 +52,15 @@ public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUp
 		}
 	}
 
+	/**
+	 * Deserializes the user data details
+	 * 
+	 * @param <T>    The user data type
+	 * @param json   The input
+	 * @param clazz  The type
+	 * @param mapper The jackson mapper
+	 * @return the user data details
+	 */
 	public <T> T getUserDataUpdateEventDetail(String json, Class<T> clazz, ObjectMapper mapper) {
 		try {
 			return mapper.readValue(json, clazz);

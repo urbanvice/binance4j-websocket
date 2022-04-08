@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+import org.junit.jupiter.api.Test;
+
 /** endpoint doesn't seem to work */
 public class WebsocketAllTickersClientTest {
     WebsocketAllTickersClient client;
 
-    // @Test
+    @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
         client = new WebsocketAllTickersClient();
@@ -35,11 +37,31 @@ public class WebsocketAllTickersClientTest {
 
         client.onMessage(cb -> {
             System.out.println("message");
-            System.out.println(cb);
+
             assertNotNull(cb.getBestAskPrice());
             assertNotNull(cb.getBestAskQuantity());
             assertNotNull(cb.getBestBidPrice());
             assertNotNull(cb.getBestBidQuantity());
+            assertNotNull(cb.getCloseTradesQuantity());
+            assertNotNull(cb.getCurrentDaysClosePrice());
+            assertNotNull(cb.getEventTime());
+            assertNotNull(cb.getEventType());
+            assertNotNull(cb.getFirstTradeId());
+            assertNotNull(cb.getHighPrice());
+            assertNotNull(cb.getLastTradeId());
+            assertNotNull(cb.getLowPrice());
+            assertNotNull(cb.getOpenPrice());
+            assertNotNull(cb.getPreviousDaysClosePrice());
+            assertNotNull(cb.getPriceChange());
+            assertNotNull(cb.getPriceChangePercent());
+            assertNotNull(cb.getStatisticsCloseTime());
+            assertNotNull(cb.getStatisticsOpenTime());
+            assertNotNull(cb.getSymbol());
+            assertNotNull(cb.getTotalNumberOfTrades());
+            assertNotNull(cb.getTotalTradedBaseAssetVolume());
+            assertNotNull(cb.getTotalTradedQuoteAssetVolume());
+            assertNotNull(cb.getWeightedAveragePrice());
+
             client.close();
         });
 

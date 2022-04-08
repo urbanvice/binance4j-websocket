@@ -93,7 +93,7 @@ public class CandlestickPayload {
 	 */
 	private BigDecimal quoteAssetVolume;
 	/**
-	 * @return THe number of trades during the interval
+	 * @return The number of trades during the interval
 	 * @param numberOfTrades The new value
 	 */
 	private Long numberOfTrades;
