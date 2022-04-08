@@ -11,13 +11,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <binance4j.version>1.0.4</binance4j.version>
-    <repository.url>https://github.com/binance4j/binance4j-websocket</repository.url>
+    <binance4j.version>1.0.5</binance4j.version>
   </properties>
 
   <name>binance4j-websocket</name>
   <description>A client to communicate with the Binance Websocket API</description>
-  <url>${repository.url}</url>
+  <url>https://github.com/binance4j/binance4j-websocket</url>
 
   <licenses>
     <license>
@@ -48,7 +47,7 @@
   </developers>
 
   <scm>
-    <url>${repository.url}.git</url>
+    <url>https://github.com/binance4j/binance4j-websocket.git</url>
   </scm>
 
   <dependencies>

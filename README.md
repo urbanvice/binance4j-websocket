@@ -12,7 +12,7 @@ Binance4j-websocket is a Java library providing an API for interacting with the 
 <dependency>
   <groupId>com.binance4j</groupId>
   <artifactId>binance4j-websocket</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
