@@ -2,7 +2,7 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)
 
-Binance4j-websocket is a Java library providing an API for interacting with the Binance websocket endpoints.
+Binance4j-websocket is a Java library for interacting with the Binance Websockets API
 
 ## Installation
 
@@ -122,4 +122,4 @@ WebsocketMiniDepthClient client  = new WebsocketMiniDepthClient("BTCBUSD");
 
 ## Javadoc
 
-[Javadoc can be found here](https://binance4j.github.io/binance4j-websocket/)
+[Javadoc](https://binance4j.github.io/binance4j-websocket/)
