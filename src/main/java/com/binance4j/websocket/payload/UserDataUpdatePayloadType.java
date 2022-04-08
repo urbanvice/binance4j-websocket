@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-/** THe user data update type */
+/** The user data update type */
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public enum UserDataUpdatePayloadType {
@@ -16,9 +16,18 @@ public enum UserDataUpdatePayloadType {
     /** Corresponds to "executionReport" events. */
     ORDER_TRADE_UPDATE("executionReport");
 
+    /**
+     * @return The enum string value
+     * @param eventTypeId The new value
+     */
     @Getter
     private final String eventTypeId;
 
+    /**
+     * 
+     * @param eventTypeId The enum string value
+     * @return The enum value
+     */
     public static UserDataUpdatePayloadType getValue(String eventTypeId) {
         if (ORDER_TRADE_UPDATE.eventTypeId.equals(eventTypeId)) {
             return ORDER_TRADE_UPDATE;

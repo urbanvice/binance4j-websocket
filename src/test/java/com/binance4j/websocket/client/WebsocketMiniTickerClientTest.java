@@ -6,13 +6,13 @@ import java.util.concurrent.CompletableFuture;
 
 import org.junit.jupiter.api.Test;
 
-public class WebsocketTickerClientTest {
-    WebsocketTickerClient client;
+public class WebsocketMiniTickerClientTest {
+    WebsocketMiniTickerClient client;
 
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketTickerClient("BTCBUSD");
+        client = new WebsocketMiniTickerClient("BTCBUSD");
 
         client.onOpen(cb -> {
             System.out.println("open");
@@ -37,29 +37,14 @@ public class WebsocketTickerClientTest {
         client.onMessage(cb -> {
             System.out.println("message");
 
-            assertNotNull(cb.getBestAskPrice());
-            assertNotNull(cb.getBestAskQuantity());
-            assertNotNull(cb.getBestBidPrice());
-            assertNotNull(cb.getBestBidQuantity());
-            assertNotNull(cb.getCloseTradesQuantity());
-            assertNotNull(cb.getCurrentDaysClosePrice());
             assertNotNull(cb.getEventTime());
             assertNotNull(cb.getEventType());
-            assertNotNull(cb.getFirstTradeId());
             assertNotNull(cb.getHighPrice());
-            assertNotNull(cb.getLastTradeId());
             assertNotNull(cb.getLowPrice());
             assertNotNull(cb.getOpenPrice());
-            assertNotNull(cb.getPreviousDaysClosePrice());
-            assertNotNull(cb.getPriceChange());
-            assertNotNull(cb.getPriceChangePercent());
-            assertNotNull(cb.getStatisticsCloseTime());
-            assertNotNull(cb.getStatisticsOpenTime());
             assertNotNull(cb.getSymbol());
-            assertNotNull(cb.getTotalNumberOfTrades());
             assertNotNull(cb.getTotalTradedBaseAssetVolume());
             assertNotNull(cb.getTotalTradedQuoteAssetVolume());
-            assertNotNull(cb.getWeightedAveragePrice());
 
             client.close();
         });

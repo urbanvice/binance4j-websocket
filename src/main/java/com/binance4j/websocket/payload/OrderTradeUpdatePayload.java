@@ -41,7 +41,7 @@ public class OrderTradeUpdatePayload {
 	@JsonProperty("e")
 	private String eventType;
 	/**
-	 * @return THe timestamp
+	 * @return The timestamp
 	 * @param eventTime The new value
 	 */
 	@JsonProperty("E")

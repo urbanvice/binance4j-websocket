@@ -12,7 +12,7 @@ public class WebsocketBookTickerClientTest {
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketBookTickerClient("SHIBEUR");
+        client = new WebsocketBookTickerClient("BTCBUSD");
 
         client.onOpen(cb -> {
             System.out.println("open");

@@ -6,13 +6,13 @@ import java.util.concurrent.CompletableFuture;
 
 import org.junit.jupiter.api.Test;
 
-public class WebsocketTickerClientTest {
-    WebsocketTickerClient client;
+public class WebsocketTradeClientTest {
+    WebsocketTradeClient client;
 
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketTickerClient("BTCBUSD");
+        client = new WebsocketTradeClient("BTCBUSD");
 
         client.onOpen(cb -> {
             System.out.println("open");
@@ -37,29 +37,17 @@ public class WebsocketTickerClientTest {
         client.onMessage(cb -> {
             System.out.println("message");
 
-            assertNotNull(cb.getBestAskPrice());
-            assertNotNull(cb.getBestAskQuantity());
-            assertNotNull(cb.getBestBidPrice());
-            assertNotNull(cb.getBestBidQuantity());
-            assertNotNull(cb.getCloseTradesQuantity());
-            assertNotNull(cb.getCurrentDaysClosePrice());
+            assertNotNull(cb.getBuyerIsMarketMaker());
+            assertNotNull(cb.getBuyerOrderId());
             assertNotNull(cb.getEventTime());
             assertNotNull(cb.getEventType());
-            assertNotNull(cb.getFirstTradeId());
-            assertNotNull(cb.getHighPrice());
-            assertNotNull(cb.getLastTradeId());
-            assertNotNull(cb.getLowPrice());
-            assertNotNull(cb.getOpenPrice());
-            assertNotNull(cb.getPreviousDaysClosePrice());
-            assertNotNull(cb.getPriceChange());
-            assertNotNull(cb.getPriceChangePercent());
-            assertNotNull(cb.getStatisticsCloseTime());
-            assertNotNull(cb.getStatisticsOpenTime());
+            assertNotNull(cb.getIgnore());
+            assertNotNull(cb.getPrice());
+            assertNotNull(cb.getQuantity());
+            assertNotNull(cb.getSellerOrderId());
             assertNotNull(cb.getSymbol());
-            assertNotNull(cb.getTotalNumberOfTrades());
-            assertNotNull(cb.getTotalTradedBaseAssetVolume());
-            assertNotNull(cb.getTotalTradedQuoteAssetVolume());
-            assertNotNull(cb.getWeightedAveragePrice());
+            assertNotNull(cb.getTradeId());
+            assertNotNull(cb.getTradeTime());
 
             client.close();
         });

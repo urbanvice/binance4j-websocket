@@ -218,7 +218,7 @@ public abstract class WebSocketClient<T> {
 	 * 
 	 * @param channel  address containing the symbols and the stream name
 	 * @param listener The websocket listener
-	 * @return
+	 * @return The websocket to communicate with the API
 	 */
 	protected WebSocket createNewWebSocket(String channel, WebSocketListener<?> listener) {
 		String streamingUrl = String.format("%s/%s", getStreamApiBaseUrl(useTestnet), channel);
@@ -234,6 +234,7 @@ public abstract class WebSocketClient<T> {
 	 * Returns the WebSocket API base URL
 	 * 
 	 * @param useTestnet should the base URL be the testNet url?
+	 * @return The stream base url
 	 */
 	protected String getStreamApiBaseUrl(boolean useTestnet) {
 		return !useTestnet
@@ -246,11 +247,12 @@ public abstract class WebSocketClient<T> {
 	 * 
 	 * @param symbols The symbols we want the market datas seperated by a coma
 	 * @param stream  The stream enpoint
-	 * @return
+	 * @return The stream channel
 	 */
 	protected String generateChannel(String symbols, String stream) {
 		if (symbols != null) {
-			System.out.println(Arrays.stream(symbols.toLowerCase().split(","))
+			System.out.println(
+					Arrays.stream(symbols.toLowerCase().split(","))
 					.map(String::trim)
 					.map(s -> String.format("%s@%s", s, stream))
 					.collect(Collectors.joining("/")));

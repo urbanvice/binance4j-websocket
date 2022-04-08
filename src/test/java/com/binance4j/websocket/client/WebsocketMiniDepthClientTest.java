@@ -4,17 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.concurrent.CompletableFuture;
 
+import com.binance4j.websocket.payload.DepthLevel;
 import com.binance4j.websocket.payload.DepthUpdateSpeed;
 
 import org.junit.jupiter.api.Test;
 
-public class WebsocketDepthClientTest {
-    WebsocketDepthClient client;
+public class WebsocketMiniDepthClientTest {
+    WebsocketMiniDepthClient client;
 
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketDepthClient("BTCBUSD", DepthUpdateSpeed.MS_100);
+        client = new WebsocketMiniDepthClient("BTCUSDT", DepthLevel.LEVEL_5, DepthUpdateSpeed.MS_100);
 
         client.onOpen(cb -> {
             System.out.println("open");
@@ -38,21 +39,12 @@ public class WebsocketDepthClientTest {
 
         client.onMessage(cb -> {
             System.out.println("message");
+            System.out.println(cb);
 
-            cb.getAsks().forEach(a -> {
-                assertNotNull(a.getPrice());
-                assertNotNull(a.getQt());
-            });
+            assertNotNull(cb.getAsks());
+            assertNotNull(cb.getBids());
+            assertNotNull(cb.getLastUpdateId());
 
-            cb.getBids().forEach(a -> {
-                assertNotNull(a.getPrice());
-                assertNotNull(a.getQt());
-            });
-
-            assertNotNull(cb.getEventTime());
-            assertNotNull(cb.getEventType());
-            assertNotNull(cb.getFinalUpdateId());
-            assertNotNull(cb.getFirstUpdateId());
             client.close();
         });
 

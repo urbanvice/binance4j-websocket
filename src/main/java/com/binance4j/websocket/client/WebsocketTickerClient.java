@@ -2,7 +2,7 @@ package com.binance4j.websocket.client;
 
 import com.binance4j.websocket.payload.TickerPayload;
 
-/** Websocket client handling Kline events on one or many symbols */
+/** Websocket client handling ticker events on one or many symbols */
 public class WebsocketTickerClient extends WebSocketClient<TickerPayload> {
     /**
      * Default constructor
@@ -11,5 +11,14 @@ public class WebsocketTickerClient extends WebSocketClient<TickerPayload> {
      */
     public WebsocketTickerClient(String symbols) {
         super(symbols, "ticker", TickerPayload.class);
+    }
+
+    /**
+     * Constructor with iterable of symbols
+     * 
+     * @param symbols The trading pair iterable
+     */
+    public WebsocketTickerClient(Iterable<? extends CharSequence> symbols) {
+        this(String.join(",", symbols));
     }
 }

@@ -22,19 +22,19 @@ public class BookTickerPayload {
     @JsonProperty("u")
     private Long updateId;
     /**
-     * @return THe trading pair
+     * @return The trading pair
      * @param symbol The new value
      */
     @JsonProperty("s")
     private String symbol;
     /**
-     * @return THe bid price
+     * @return The bid price
      * @param bidPrice The new value
      */
     @JsonProperty("b")
     private String bidPrice;
     /**
-     * @return THe bid quantity
+     * @return The bid quantity
      * @param bidQuantity The new value
      */
     @JsonProperty("B")

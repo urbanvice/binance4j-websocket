@@ -14,4 +14,14 @@ public class WebsocketCandlestickClient extends WebSocketClient<CandlestickPaylo
     public WebsocketCandlestickClient(String symbols, CandlestickInterval interval) {
         super(symbols, String.format("kline_%s", interval.getValue()), CandlestickPayload.class);
     }
+
+    /**
+     * Constructor with iterable of symbols
+     * 
+     * @param symbols  The trading pair iterable
+     * @param interval The candlestick interval
+     */
+    public WebsocketCandlestickClient(Iterable<? extends CharSequence> symbols, CandlestickInterval interval) {
+        this(String.join(",", symbols), interval);
+    }
 }

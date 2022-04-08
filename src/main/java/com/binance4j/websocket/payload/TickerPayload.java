@@ -9,12 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
+/** Pair ticker */
 @Data
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TickerPayload {
 	/**
-	 * @return THe event type
+	 * @return The event type
 	 * @param eventType The new value
 	 */
 	@JsonProperty("e")
@@ -56,7 +57,7 @@ public class TickerPayload {
 	@JsonProperty("x")
 	private BigDecimal previousDaysClosePrice;
 	/**
-	 * @return
+	 * @return The current days close price
 	 * @param currentDaysClosePrice The new value
 	 */
 	@JsonProperty("c")

@@ -14,7 +14,7 @@ public class WebsocketCandlestickClientTest {
     @Test
     public void testClient() {
         CompletableFuture<Void> future = new CompletableFuture<>();
-        client = new WebsocketCandlestickClient("SHIBEUR", CandlestickInterval.ONE_MINUTE);
+        client = new WebsocketCandlestickClient("BTCBUSD", CandlestickInterval.ONE_MINUTE);
 
         client.onOpen(cb -> {
             System.out.println("open");
