@@ -27,12 +27,10 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderTradeUpdatePayload {
 	/**
-	 * #TODO vérifier en test que id n'est pas just i
-	 * 
 	 * @return The trade id
 	 * @param id The new value
 	 */
-	@JsonProperty("id")
+	@JsonProperty("i")
 	private String id;
 	/**
 	 * @return The event type
