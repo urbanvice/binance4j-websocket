@@ -35,7 +35,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
      *         failure event
      * @param closing The new value
      */
-    private Boolean closing = false;
+    private boolean closing = false;
 
     /**
      * Default constructor
@@ -71,7 +71,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
         try {
             callback.onResponse(objectReader.readValue(text));
         } catch (final IOException e) {
-            // TODO handle onResponseException
+            throw new RuntimeException(e);
         }
     }
 
