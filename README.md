@@ -8,7 +8,7 @@
 [![javadoc](https://img.shields.io/badge/javadoc-latest-informational)](https://binance4j.github.io/binance4j-websocket)
 [![binance doc](https://img.shields.io/badge/binance%20doc-webscoket-gold)](https://binance-docs.github.io/apidocs/spot/en/#websocket-market-streams)
 
-Binance4j-websocket is a Java library providing an API for interacting with the Binance websocket endpoints.
+Binance4j-websocket is a Java library for interacting with the Binance Websockets API
 
 ## Installation
 
