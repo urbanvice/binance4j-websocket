@@ -27,12 +27,6 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderTradeUpdatePayload {
 	/**
-	 * @return The trade id
-	 * @param id The new value
-	 */
-	@JsonProperty("i")
-	private String id;
-	/**
 	 * @return The event type
 	 * @param eventType The new value
 	 */
