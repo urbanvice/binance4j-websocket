@@ -39,6 +39,12 @@ jobs:
             ]
       - name: Deploy artifact on maven
         run: mvn --no-transfer-progress --batch-mode -Dgpg.passphrase=${{ env.PASSPHRASE }}  clean deploy 
+      - name: Deploy javadoc to gh-pages
+        uses: JamesIves/github-pages-deploy-action@4.1.8
+        with:
+          BRANCH: gh-pages
+          CLEAN: true
+          FOLDER: target/apidocs
       - name: Merge deploy -> main
         uses: devmasx/merge-branch@master
         with:

@@ -1,9 +1,9 @@
 package com.binance4j.websocket.client;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import com.binance4j.core.configuration.CoreConfiguration;
 import com.binance4j.core.exception.ApiException;
 
 import io.reactivex.rxjava3.functions.Consumer;
@@ -22,16 +22,6 @@ import okhttp3.WebSocket;
  */
 @Data
 public abstract class WebSocketClient<T> {
-	/**
-	 * @return The URL base domain
-	 * @param BASE_DOMAIN The new value
-	 */
-	private static final String BASE_DOMAIN = "binance.com";
-	/**
-	 * @return The testnet URL base domain
-	 * @param TESTNET_DOMAIN The new value
-	 */
-	private static final String TESTNET_DOMAIN = "testnet.binance.vision";
 	/**
 	 * @return The response data sent by the API
 	 * @param payloadClass The new value
@@ -57,16 +47,7 @@ public abstract class WebSocketClient<T> {
 	 * @param useTestnet The new value
 	 */
 	protected boolean useTestnet;
-	/**
-	 * @return The default ping interval to prevent websocket timeout
-	 * @param pingIntervalNum The new value
-	 */
-	protected int pingIntervalNum = 3;
-	/**
-	 * @return The default ping interval unit to prevent websocket timeout
-	 * @param pingInterval The new value
-	 */
-	protected TimeUnit pingInterval = TimeUnit.MINUTES;
+
 	/** The {@link #onMessage} consumer */
 	@Getter(AccessLevel.NONE)
 	@Setter(AccessLevel.NONE)
@@ -225,7 +206,7 @@ public abstract class WebSocketClient<T> {
 		Request request = new Request.Builder().url(streamingUrl).build();
 		return new OkHttpClient.Builder()
 				.dispatcher(new Dispatcher())
-				.pingInterval(pingIntervalNum, pingInterval)
+				.pingInterval(CoreConfiguration.getPingIntervalNum(), CoreConfiguration.getPingInterval())
 				.build()
 				.newWebSocket(request, listener);
 	}
@@ -238,8 +219,9 @@ public abstract class WebSocketClient<T> {
 	 */
 	protected String getStreamApiBaseUrl(boolean useTestnet) {
 		return !useTestnet
-				? String.format("wss://stream.%s:9443/ws", BASE_DOMAIN)
-				: String.format("wss://%s/ws", TESTNET_DOMAIN);
+				? String.format("wss://stream.%s:%s/ws", CoreConfiguration.getBaseDomain(),
+						CoreConfiguration.getWebsocketPort())
+				: String.format("wss://%s/ws", CoreConfiguration.getTestnetDomain());
 	}
 
 	/**
@@ -250,13 +232,6 @@ public abstract class WebSocketClient<T> {
 	 * @return The stream channel
 	 */
 	protected String generateChannel(String symbols, String stream) {
-		if (symbols != null) {
-			System.out.println(
-					Arrays.stream(symbols.toLowerCase().split(","))
-					.map(String::trim)
-					.map(s -> String.format("%s@%s", s, stream))
-					.collect(Collectors.joining("/")));
-		}
 		return symbols == null ? stream
 				: Arrays.stream(symbols.toLowerCase().split(","))
 						.map(String::trim)
