@@ -1,7 +1,7 @@
 # binance4j-websocket
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)
-![Sonatype Nexus](https://img.shields.io/nexus/r/com.binance4j/binance4j-websocket?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.binance4j/binance4j-websocket/badge.svg)](https://search.maven.org/search?q=com.binance4j)
+[![Sonatype Nexus](https://img.shields.io/nexus/r/com.binance4j/binance4j-websocket?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)](https://s01.oss.sonatype.org/#nexus-search;quick~com.binance4j)
 ![Build Status develop](https://img.shields.io/github/workflow/status/binance4j/binance4j-websocket/Deploy%20Artifact%20on%20Maven%20then%20merge%20on%20main/deploy?label=Test)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![JDK](https://upload.wikimedia.org/wikipedia/commons/7/75/Blue_JDK_1.8%2B_Shield_Badge.svg)
