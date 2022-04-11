@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![JDK](https://upload.wikimedia.org/wikipedia/commons/7/75/Blue_JDK_1.8%2B_Shield_Badge.svg)
 [![javadoc](https://img.shields.io/badge/javadoc-latest-informational)](https://binance4j.github.io/binance4j-websocket)
+[![binance doc](https://img.shields.io/badge/binance%20doc-webscoket-gold)](https://binance-docs.github.io/apidocs/spot/en/#websocket-market-streams)
 
 Binance4j-websocket is a Java library providing an API for interacting with the Binance websocket endpoints.
 
@@ -23,7 +24,7 @@ Binance4j-websocket is a Java library providing an API for interacting with the 
 
 ### AggTrade client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/#aggregate-trade-streams)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/#aggregate-trade-streams)
 
 ```java
 WebsocketAggTradeClient client = new WebsocketAggTradeClient("BTCBUSD");
@@ -47,7 +48,7 @@ WebsocketAggTradeClient client = new WebsocketAggTradeClient("BTCBUSD");
 
 ### Candlestick client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-streams)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#kline-candlestick-streams)
 
 ```java
 WebsocketCandlestickClient client  = new WebsocketCandlestickClient("BTCBUSD", CandlestickInterval.ONE_MINUTE);
@@ -55,7 +56,7 @@ WebsocketCandlestickClient client  = new WebsocketCandlestickClient("BTCBUSD", C
 
 ### Trade client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#trade-streams)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#trade-streams)
 
 ```java
 WebsocketTradeClient client  = new WebsocketTradeClient("BTCBUSD");
@@ -63,7 +64,7 @@ WebsocketTradeClient client  = new WebsocketTradeClient("BTCBUSD");
 
 ### Ticker client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/#individual-symbol-ticker-streams)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/#individual-symbol-ticker-streams)
 
 ```java
 WebsocketTickerClient client  = new WebsocketTickerClient("BTCBUSD");
@@ -71,7 +72,7 @@ WebsocketTickerClient client  = new WebsocketTickerClient("BTCBUSD");
 
 ### Ticker client for all symbols
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#all-market-tickers-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-market-tickers-stream)
 
 ```java
 WebsocketAllTickersClient client  = new WebsocketAllTickersClient();
@@ -79,7 +80,7 @@ WebsocketAllTickersClient client  = new WebsocketAllTickersClient();
 
 ### MiniTicker client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-mini-ticker-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#individual-symbol-mini-ticker-stream)
 
 ```java
 WebsocketTickerClient client  = new WebsocketTickerClient("BTCBUSD");
@@ -87,7 +88,7 @@ WebsocketTickerClient client  = new WebsocketTickerClient("BTCBUSD");
 
 ### MiniTicker client for all symbols
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#all-market-mini-tickers-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-market-mini-tickers-stream)
 
 ```java
 WebsocketAllMiniTickersClient client  = new WebsocketAllMiniTickersClient();
@@ -95,7 +96,7 @@ WebsocketAllMiniTickersClient client  = new WebsocketAllMiniTickersClient();
 
 ### Book ticker client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/#individual-symbol-ticker-streams)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/#individual-symbol-ticker-streams)
 
 ```java
 WebsocketBookTickerClient client  = new WebsocketBookTickerClient("BTCBUSD");
@@ -103,7 +104,7 @@ WebsocketBookTickerClient client  = new WebsocketBookTickerClient("BTCBUSD");
 
 ### Book ticker client for all symbols
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#all-book-tickers-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-book-tickers-stream)
 
 ```java
 WebsocketAllBookTickersClient client  = new WebsocketAllBookTickersClient();
@@ -111,7 +112,7 @@ WebsocketAllBookTickersClient client  = new WebsocketAllBookTickersClient();
 
 ### Depth client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#diff-depth-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#diff-depth-stream)
 
 ```java
 WebsocketDepthClient client  = new WebsocketDepthClient("BTCBUSD");
@@ -119,7 +120,7 @@ WebsocketDepthClient client  = new WebsocketDepthClient("BTCBUSD");
 
 ### MiniDepth client
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#all-book-tickers-stream)
+[![binance doc](https://img.shields.io/badge/binance%20doc-websocket-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-book-tickers-stream)
 
 ```java
 WebsocketMiniDepthClient client  = new WebsocketMiniDepthClient("BTCBUSD");
