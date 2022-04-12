@@ -1,10 +1,10 @@
 package com.binance4j.websocket.client;
 
 import com.binance4j.core.kline.CandlestickInterval;
-import com.binance4j.websocket.payload.CandlestickPayload;
+import com.binance4j.websocket.payload.CandlestickBarPayload;
 
 /** Websocket client handling Kline events on one or many symbols */
-public class WebsocketCandlestickClient extends WebSocketClient<CandlestickPayload> {
+public class WebsocketCandlestickClient extends WebSocketClient<CandlestickBarPayload> {
 
     /**
      * 
@@ -12,7 +12,7 @@ public class WebsocketCandlestickClient extends WebSocketClient<CandlestickPaylo
      * @param interval The candlestick interval
      */
     public WebsocketCandlestickClient(String symbols, CandlestickInterval interval) {
-        super(symbols, String.format("kline_%s", interval.getValue()), CandlestickPayload.class);
+        super(symbols, String.format("kline_%s", interval.getValue()), CandlestickBarPayload.class);
     }
 
     /**

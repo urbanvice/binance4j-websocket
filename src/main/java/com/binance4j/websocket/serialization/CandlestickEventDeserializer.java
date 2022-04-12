@@ -3,7 +3,7 @@ package com.binance4j.websocket.serialization;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import com.binance4j.websocket.payload.CandlestickPayload;
+import com.binance4j.websocket.payload.CandlestickBarPayload;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -11,17 +11,17 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * {@link CandlestickPayload} deserializer
+ * {@link CandlestickBarPayload} deserializer
  */
-public class CandlestickEventDeserializer extends JsonDeserializer<CandlestickPayload> {
+public class CandlestickEventDeserializer extends JsonDeserializer<CandlestickBarPayload> {
 
   @Override
-  public CandlestickPayload deserialize(JsonParser jp, DeserializationContext ctx) throws IOException {
+  public CandlestickBarPayload deserialize(JsonParser jp, DeserializationContext ctx) throws IOException {
     ObjectCodec oc = jp.getCodec();
     JsonNode node = oc.readTree(jp);
     // Données de chandelier
     JsonNode candlestickNode = node.get("k");
-    CandlestickPayload candlestickEvent = new CandlestickPayload();
+    CandlestickBarPayload candlestickEvent = new CandlestickBarPayload();
 
     // Parse header
     candlestickEvent.setEventType(node.get("e").asText());
