@@ -39,7 +39,6 @@ public class WebsocketMiniDepthClientTest {
 
         client.onMessage(cb -> {
             System.out.println("message");
-            System.out.println(cb);
 
             assertNotNull(cb.getAsks());
             assertNotNull(cb.getBids());
