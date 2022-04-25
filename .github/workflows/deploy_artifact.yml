@@ -45,10 +45,4 @@ jobs:
           BRANCH: gh-pages
           CLEAN: true
           FOLDER: target/apidocs
-      - name: Merge deploy -> main
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: deploy
-          target_branch: main
-          github_token: ${{ env.GITHUB_TOKEN }}
+
