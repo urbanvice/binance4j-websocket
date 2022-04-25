@@ -3,7 +3,7 @@ name: Deploy Artifact on Maven then merge on main
 on:
   push:
     branches:
-      - deploy
+      - main
 
 jobs:
   publish:
