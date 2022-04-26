@@ -2,18 +2,18 @@ package com.binance4j.websocket.serialization;
 
 import java.io.IOException;
 
-import com.binance4j.websocket.payload.CandlestickPayload;
+import com.binance4j.websocket.payload.CandlestickBarPayload;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
 /**
- * {@link CandlestickPayload} serializer
+ * {@link CandlestickBarPayload} serializer
  */
-public class CandlestickEventSerializer extends JsonSerializer<CandlestickPayload> {
+public class CandlestickEventSerializer extends JsonSerializer<CandlestickBarPayload> {
 
   @Override
-  public void serialize(CandlestickPayload candlestickEvent, JsonGenerator gen, SerializerProvider serializers)
+  public void serialize(CandlestickBarPayload candlestickEvent, JsonGenerator gen, SerializerProvider serializers)
       throws IOException {
     gen.writeStartObject();
 

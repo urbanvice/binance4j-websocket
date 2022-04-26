@@ -1,6 +1,7 @@
 package com.binance4j.websocket.client;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -56,7 +57,7 @@ public class WebsocketMiniTickerClientTest {
         } catch (Exception e) {
             future.complete(null);
             System.out.println(e);
-            assertNotNull(e);
+            assertTrue(false);
         }
     }
 }
