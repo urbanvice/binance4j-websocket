@@ -1,6 +1,6 @@
 package com.binance4j.websocket.client;
 
-import com.binance4j.core.kline.CandlestickInterval;
+import com.binance4j.core.market.CandlestickInterval;
 import com.binance4j.websocket.payload.CandlestickBarPayload;
 
 /** Websocket client handling Kline events on one or many symbols */

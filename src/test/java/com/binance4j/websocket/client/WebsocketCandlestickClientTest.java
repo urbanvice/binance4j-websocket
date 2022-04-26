@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-import com.binance4j.core.kline.CandlestickInterval;
+import com.binance4j.core.market.CandlestickInterval;
 
 import org.junit.jupiter.api.Test;
 
