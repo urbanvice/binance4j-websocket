@@ -16,20 +16,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * {@link UserDataUpdatePayload} deserializer
- *
- * @see UserDataUpdatePayload
  */
 public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUpdatePayload> {
 
-	private ObjectMapper mapper;
-
 	@Override
 	public UserDataUpdatePayload deserialize(JsonParser jp, DeserializationContext ctx) throws IOException {
-
-		if (mapper == null) {
-			mapper = new ObjectMapper();
-		}
-
+		ObjectMapper mapper = new ObjectMapper();
 		ObjectCodec oc = jp.getCodec();
 		JsonNode node = oc.readTree(jp);
 		String json = node.toString();
@@ -40,32 +32,17 @@ public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUp
 		switch (userDataUpdateEventType) {
 			case ACCOUNT_POSITION_UPDATE:
 				return new UserDataUpdatePayload(userDataUpdateEventType, eventTime,
-						getUserDataUpdateEventDetail(json, AccountUpdatePayload.class, mapper), null, null);
+						mapper.readValue(json, AccountUpdatePayload.class), null, null);
 			case BALANCE_UPDATE:
 				return new UserDataUpdatePayload(userDataUpdateEventType, eventTime, null,
-						getUserDataUpdateEventDetail(json, BalanceUpdatePayload.class, mapper), null);
+						mapper.readValue(json, BalanceUpdatePayload.class),
+						null);
 			case ORDER_TRADE_UPDATE:
 				return new UserDataUpdatePayload(userDataUpdateEventType, eventTime,
-						null, null, getUserDataUpdateEventDetail(json, OrderTradeUpdatePayload.class, mapper));
+						null, null,
+						mapper.readValue(json, OrderTradeUpdatePayload.class));
 			default:
 				throw new IllegalArgumentException();
-		}
-	}
-
-	/**
-	 * Deserializes the user data details
-	 * 
-	 * @param <T>    The user data type
-	 * @param json   The input
-	 * @param clazz  The type
-	 * @param mapper The jackson mapper
-	 * @return the user data details
-	 */
-	public <T> T getUserDataUpdateEventDetail(String json, Class<T> clazz, ObjectMapper mapper) {
-		try {
-			return mapper.readValue(json, clazz);
-		} catch (IOException e) {
-			throw new NullPointerException();
 		}
 	}
 }

@@ -2,7 +2,6 @@ package com.binance4j.websocket.client;
 
 import java.io.IOException;
 
-import com.binance4j.core.exception.ApiError;
 import com.binance4j.core.exception.ApiException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,11 +9,12 @@ import com.fasterxml.jackson.databind.ObjectReader;
 
 import okhttp3.Response;
 import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
 /**
  * Binance API WebSocket listener.
  */
-public class WebSocketListener<T> extends okhttp3.WebSocketListener {
+public class ApiWebSocketListener<T> extends WebSocketListener {
     /**
      * @return The websocket callback
      * @param callback The new value
@@ -43,7 +43,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
      * @param callback   The websocket callback
      * @param eventClass The payload class
      */
-    public WebSocketListener(final WebsocketCallback<T> callback, final Class<T> eventClass) {
+    public ApiWebSocketListener(final WebsocketCallback<T> callback, final Class<T> eventClass) {
         this.callback = callback;
         this.objectReader = mapper.readerFor(eventClass);
     }
@@ -54,7 +54,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
      * @param callback           The websocket callback
      * @param eventTypeReference ???
      */
-    public WebSocketListener(final WebsocketCallback<T> callback,
+    public ApiWebSocketListener(final WebsocketCallback<T> callback,
             final TypeReference<T> eventTypeReference) {
         this.callback = callback;
         this.objectReader = mapper.readerFor(eventTypeReference);
@@ -71,7 +71,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
         try {
             callback.onResponse(objectReader.readValue(text));
         } catch (final IOException e) {
-            throw new RuntimeException(e);
+            callback.onFailure(new ApiException(-1000, e.getMessage()));
         }
     }
 
@@ -122,7 +122,7 @@ public class WebSocketListener<T> extends okhttp3.WebSocketListener {
     @Override
     public void onFailure(final WebSocket webSocket, final Throwable t, final Response response) {
         if (!closing) {
-            callback.onFailure(new ApiException(new ApiError(-1000, t.getMessage())));
+            callback.onFailure(new ApiException(-1000, t.getMessage()));
         }
     }
 }

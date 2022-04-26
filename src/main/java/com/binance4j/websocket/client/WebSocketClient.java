@@ -186,7 +186,7 @@ public abstract class WebSocketClient<T> {
 		};
 
 		websocket = createNewWebSocket(generateChannel(symbols, stream),
-				new WebSocketListener<>(callback, payloadClass));
+				new ApiWebSocketListener<>(callback, payloadClass));
 	}
 
 	/** Closes the stream */
@@ -201,7 +201,7 @@ public abstract class WebSocketClient<T> {
 	 * @param listener The websocket listener
 	 * @return The websocket to communicate with the API
 	 */
-	protected WebSocket createNewWebSocket(String channel, WebSocketListener<?> listener) {
+	protected WebSocket createNewWebSocket(String channel, ApiWebSocketListener<?> listener) {
 		String streamingUrl = String.format("%s/%s", getStreamApiBaseUrl(useTestnet), channel);
 		Request request = new Request.Builder().url(streamingUrl).build();
 		return new OkHttpClient.Builder()
