@@ -42,12 +42,12 @@ public class WebsocketDepthClientTest {
 
             cb.getAsks().forEach(a -> {
                 assertNotNull(a.getPrice());
-                assertNotNull(a.getQt());
+                assertNotNull(a.getQuantity());
             });
 
             cb.getBids().forEach(a -> {
                 assertNotNull(a.getPrice());
-                assertNotNull(a.getQt());
+                assertNotNull(a.getQuantity());
             });
 
             assertNotNull(cb.getEventTime());
